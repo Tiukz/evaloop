@@ -1,0 +1,10 @@
+@extends('layouts.app')
+@section('title', 'Administrasi Organisasi')
+@section('breadcrumb', 'Administrasi / Organisasi')
+@section('content')
+<header class="page-header"><div><p class="module-context mb-3">@display($university->name)</p><h1 class="page-title">Administrasi Organisasi</h1></div><x-button :href="route('university.organizations.create', $university)">Buat organisasi <x-icon name="organization" size="16" /></x-button></header>
+<div class="reading-layout"><div class="min-w-0"><div class="mb-4 flex flex-wrap justify-between gap-3 text-xs text-slate-500"><span>{{ $organizations->total() }} organisasi tercatat</span><span>Universitas · Fakultas · Program studi</span></div>
+@if($organizations->isEmpty())<x-empty-state title="Belum ada organisasi" message="Buat organisasi pertama dan tetapkan admin awal dari akun yang sudah terdaftar." />@else
+<ul class="entity-directory">@foreach($organizations as $organization)<li class="entity-row"><div class="entity-identity"><span class="entity-monogram"><x-icon name="organization" size="19" /></span><div class="min-w-0"><p class="mb-1 text-xs text-slate-500">{{ $organization->study_program_id ? 'Tingkat program studi' : ($organization->faculty_id ? 'Tingkat fakultas' : 'Tingkat universitas') }}</p><h2 class="text-sm font-semibold leading-6">@display($organization->name)</h2><p class="mt-2 text-xs text-slate-500">@display($organization->studyProgram?->name ?? $organization->faculty?->name ?? $university->name)</p></div></div><a href="{{ route('university.organizations.edit', [$university, $organization]) }}" class="section-link ev-link">Edit informasi dasar <x-icon name="arrow" size="15" /></a></li>@endforeach</ul><div class="mt-6">{{ $organizations->links() }}</div>@endif
+</div><aside class="context-rail"><h2>Batas administrasi</h2><p>Hak ini tidak memberikan akses otomatis ke workspace, rapat, atau tugas privat kepanitiaan.</p><p>Organisasi dapat berada pada tingkat universitas, fakultas, atau program studi. Status akses ditentukan oleh membership, bukan status organisasi.</p></aside></div>
+@endsection

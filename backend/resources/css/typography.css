@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(../fonts/inter/inter-latin-ext-variable.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(../fonts/inter/inter-latin-variable.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(../fonts/geist/geist-latin-ext-variable.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(../fonts/geist/geist-latin-variable.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Only approved logo/poster artwork retains Manrope. */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(../fonts/manrope/manrope-latin-ext-variable.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(../fonts/manrope/manrope-latin-variable.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-interface: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --font-artwork: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    --text-ev-page: clamp(1.75rem, 1.55rem + .7vw, 2rem);
+    --text-ev-section: clamp(1.125rem, 1.05rem + .35vw, 1.375rem);
+    --text-ev-card: clamp(1rem, .96rem + .15vw, 1.125rem);
+    --text-ev-body: .9375rem;
+    --text-ev-interface: .875rem;
+    --text-ev-metadata: .8125rem;
+}
+:root {
+    --ev-heading-weight: 600;
+    --ev-heading-leading: 1.3;
+    --ev-heading-tracking: -.02em;
+}
+@utility type-page {
+    font-family: var(--font-display);
+    font-size: var(--text-ev-page);
+    font-weight: var(--ev-heading-weight);
+    line-height: var(--ev-heading-leading);
+    letter-spacing: var(--ev-heading-tracking);
+}
+@utility type-section {
+    font-family: var(--font-display);
+    font-size: var(--text-ev-section);
+    font-weight: var(--ev-heading-weight);
+    line-height: 1.4;
+    letter-spacing: -.015em;
+}
+@utility type-card {
+    font-family: var(--font-display);
+    font-size: var(--text-ev-card);
+    font-weight: var(--ev-heading-weight);
+    line-height: 1.45;
+    letter-spacing: -.01em;
+}
+@utility type-interface {
+    font-family: var(--font-interface);
+    font-size: var(--text-ev-interface);
+    line-height: 1.6;
+    letter-spacing: normal;
+}
+@utility type-metadata {
+    font-family: var(--font-interface);
+    font-size: var(--text-ev-metadata);
+    line-height: 1.6;
+    letter-spacing: normal;
+}
+/* Semantic defaults cover existing Blade without changing its composition. */
+.app-body { font-family: var(--font-interface); font-size: var(--text-ev-body); line-height: 1.6; font-weight: 400; font-optical-sizing: auto; }
+.app-content h1, .app-content .page-title, .app-content .workspace-title { @apply type-page; }
+.app-content h2 { @apply type-section; }
+.app-content h3, .app-content h4, .app-content .radar-event-title { @apply type-card; }
+/* Task rows, database cells, agenda labels and navigation are interface text. */
+.app-content .task-issue h3, .app-content .pc-task h3, .app-content .ecc-task-row h3,
+.app-content .tdb-table :is(h2,h3,h4), .app-content .task-group-heading h2,
+.app-content .pc-agenda-day>h3 { @apply type-interface; font-weight: 600; }
+.app-content .entity-directory h2 { @apply type-card; }
+.app-body .sidebar-group h2 { @apply type-metadata; font-weight: 500; }
+.app-body nav a:where(:not(.public-brand):not(.sidebar-brand)), .app-body .sidebar-link { @apply type-interface; font-weight: 500; }
+.app-body :is(button,input,select,textarea,label), .app-body .ev-button { font-family: var(--font-interface); letter-spacing: normal; }
+.app-body .ev-button { font-size: var(--text-ev-interface); font-weight: 600; }
+.app-body :is(th,td), .app-body .topbar-breadcrumb, .app-body .role-label { font-family: var(--font-interface); }
+.app-body .public-brand, .brand-wordmark, .radar-poster { font-family: var(--font-artwork); }
+
+/* These are project-card titles, not page/section headings. */
+.app-content #featured-workspace, .app-content h2[id^="organization-"] { @apply type-card; }
+.oh-monogram { font-family: var(--font-artwork); }

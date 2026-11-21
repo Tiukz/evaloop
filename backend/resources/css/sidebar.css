@@ -1,0 +1,101 @@
+[data-sidebar-ready] .mobile-navigation-trigger,
+.sidebar-mobile-toggle[hidden],
+.sidebar-icon-button[hidden],
+.sidebar-tooltip[hidden] { display: none; }
+
+.sidebar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+}
+.sidebar-heading .sidebar-brand { min-width: 0; }
+.sidebar-icon-button, .sidebar-mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+.sidebar-icon-button:hover, .sidebar-mobile-toggle:hover { background: var(--color-ev-mist); }
+.sidebar-icon-button:active, .sidebar-mobile-toggle:active { background: var(--color-ev-aqua); }
+
+.sidebar-tooltip {
+    position: fixed;
+    z-index: 50;
+    pointer-events: none;
+    translate: 0 -50%;
+    max-width: 13rem;
+    padding: .375rem .625rem;
+    border-radius: .375rem;
+    background: var(--color-ev-ink);
+    color: white;
+    font-size: .8125rem;
+    line-height: 1.4;
+}
+.sidebar-account[open] .ev-menu-panel { z-index: 2; }
+.sidebar-mobile-toggle { margin: .5rem .875rem; padding-inline: .625rem; }
+.sidebar-mobile-toggle .brand-wordmark { font-size: 1.5rem; }
+.sidebar-drawer {
+    position: fixed;
+    inset: 0 auto 0 0;
+    margin: 0;
+    width: min(19rem, calc(100% - 2.75rem));
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    padding: 0;
+    overflow: hidden;
+    color: var(--color-ev-ink);
+    background: var(--color-ev-ice);
+    border-inline-end: 1px solid var(--color-ev-border);
+}
+.sidebar-drawer[open] { animation: sidebar-enter var(--ev-disclosure) var(--ease-ev); }
+.sidebar-drawer::backdrop { background: rgb(37 51 68 / .35); }
+.sidebar-drawer .sidebar-body { min-height: 100%; }
+.sidebar-drawer .sidebar-brand { display: block; padding: .5rem 0; }
+.sidebar-drawer .sidebar-groups { display: flex; flex-direction: column; gap: 1rem; }
+body:has(.sidebar-drawer[open]) { overflow: hidden; }
+
+@keyframes sidebar-enter { from { transform: translateX(-100%); } }
+
+@media (min-width: 1024px) {
+    .app-sidebar[data-sidebar-ready] { overflow: visible; }
+    .app-sidebar[data-sidebar-ready] .sidebar-body,
+    .sidebar-drawer .sidebar-body {
+        height: 100dvh;
+        gap: 1rem;
+        padding: .75rem .75rem 1rem;
+    }
+    .app-sidebar[data-sidebar-ready] .sidebar-groups,
+    .sidebar-drawer .sidebar-groups { overflow-y: auto; padding: 4px; margin: -4px; min-height: 0; }
+    .app-sidebar[data-sidebar-ready] .sidebar-foot { padding-inline: 0; }
+    .app-sidebar[data-sidebar-ready] .sidebar-brand { padding: .5rem .25rem; }
+    .app-sidebar[data-sidebar-ready] .sidebar-heading > button { flex: none; }
+    .app-sidebar[data-sidebar-collapsed] { width: 4.5rem; }
+    .app-body:has([data-sidebar-collapsed]) .app-stage { margin-left: 4.5rem; }
+    .app-sidebar[data-sidebar-collapsed] :is(.sidebar-brand, .sidebar-group h2, .sidebar-link > span, .sidebar-pilot, .account-identity, .sidebar-account summary > svg) { display: none; }
+    .app-sidebar[data-sidebar-collapsed] .sidebar-heading { justify-content: center; }
+    .app-sidebar[data-sidebar-collapsed] .sidebar-groups { gap: .75rem; }
+    .app-sidebar[data-sidebar-collapsed] .sidebar-link { justify-content: center; padding-inline: 0; }
+    .app-sidebar[data-sidebar-collapsed] .sidebar-account summary { justify-content: center; padding-inline: 0; }
+    .app-sidebar[data-sidebar-collapsed] .sidebar-account .ev-menu-panel {
+        inset: auto auto 0 calc(100% + .875rem);
+        inline-size: 14rem;
+        margin: 0;
+    }
+}
+@media (width < 1024px) {
+    .sidebar-drawer .sidebar-body { height: 100%; gap: 1rem; padding: .75rem .875rem 1rem; }
+    .sidebar-drawer .sidebar-groups { overflow-y: auto; padding: 4px; margin: -4px; min-height: 0; }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .app-sidebar[data-sidebar-animating] { transition: width var(--ev-hover) var(--ease-ev); }
+    .app-body:has([data-sidebar-animating]) .app-stage { transition: margin-left var(--ev-hover) var(--ease-ev); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .sidebar-drawer[open] { animation: none; }
+}

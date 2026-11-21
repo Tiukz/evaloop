@@ -1,0 +1,3 @@
+@props(['name', 'label', 'value' => '', 'rows' => 5])
+@php($fieldValue = old($name, $value))
+<div><label class="block text-sm font-medium" for="{{ $name }}">{{ $label }}</label><textarea id="{{ $name }}" name="{{ $name }}" rows="{{ $rows }}" @error($name) aria-invalid="true" aria-describedby="{{ $name }}-error" @enderror {{ $attributes->class(['ev-control mt-2 block w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm leading-7']) }}>{{ is_string($fieldValue) ? $fieldValue : '' }}</textarea>@error($name)<p id="{{ $name }}-error" role="alert" class="mt-2 text-sm text-ev-danger">{{ $message }}</p>@enderror</div>

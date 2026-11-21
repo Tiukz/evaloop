@@ -1,0 +1,4 @@
+Family: Geist
+Distribution: https://fonts.googleapis.com/css2?family=Geist:wght@400..700&display=swap
+License: SIL Open Font License; see OFL.txt
+Local variable WOFF2: normal,400-700,Latin/Latin-ext.

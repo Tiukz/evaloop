@@ -1,0 +1,4 @@
+<details class="ev-account-menu sidebar-account" data-account-menu>
+    <summary class="ev-menu-trigger" aria-label="Menu akun" data-sidebar-label="Menu akun"><span class="account-avatar">@display(mb_substr(preg_replace('/^\[(?:SIMULASI|TECFEST)\]\s*/u', '', auth()->user()->name), 0, 1))</span><span class="account-identity"><strong>@display(auth()->user()->name)</strong><span>Akun pribadi</span></span><x-icon name="chevron" size="14" /></summary>
+    <div class="ev-menu-panel"><p class="px-2 text-xs font-semibold text-slate-800">Akun aktif</p><p class="px-2 pb-2 text-xs leading-5 break-all text-slate-600">{{ auth()->user()->email }}</p><a href="{{ route('dashboard') }}" class="ev-nav-item w-full">Dashboard</a><form action="{{ route('logout') }}" method="POST">@csrf<x-button variant="ghost" class="w-full">Keluar</x-button></form></div>
+</details>
