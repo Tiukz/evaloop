@@ -1,6 +1,6 @@
 # Evaloop — Product Version Tracker
 
-Scope aktif adalah aplikasi web responsif. Tabel dan catatan fase di bawah memuat riwayat verifikasi.
+University MVP v1.1 berpusat pada aplikasi web responsif. Evaloop Android dikembangkan sebagai aplikasi pendamping Flutter dengan versi build tersendiri. Tabel dan catatan fase di bawah memuat riwayat verifikasi.
 
 | Versi produk | Scope | Status |
 | --- | --- | --- |
@@ -173,3 +173,21 @@ Verified65 SQLite/703 assertions,4 MySQL/75 assertions,5 Node tests,32 role-awar
 ## Lampiran evaluasi Legacy Insights
 
 Evaluasi dapat menyimpan hingga lima lampiran pada disk Laravel privat. Ketua atau admin organisasi yang dapat mengedit evaluasi dapat mengunggah dan menghapusnya sebelum approval. Panitia edisi penerima mendapat akses melalui policy evaluasi sumber setelah approval, tanpa penyalinan file. Migration aditif diterapkan pada MySQL development lokal. Pengujian unggah dan akses memakai data terisolasi.
+
+## Progres Evaloop Android
+
+Versi build Flutter saat ini `0.1.0+1`. Source Android dan panduan menjalankan aplikasi tersedia di `main` sejak commit `9fc9862`. Klien memakai API JSON `/api/v1` dari Laravel yang sama, dengan sesi, CSRF untuk mutasi, dan pemeriksaan izin di server. Lihat [panduan Android](mobile/README.md) untuk konfigurasi emulator, perangkat via USB, dan origin HTTPS.
+
+| Tahap | Progres | Verifikasi tercatat |
+| --- | --- | --- |
+| Fondasi dan sesi | Login, profil, logout, drawer, dan tema native. Konfigurasi debug mendukung emulator dan perangkat via USB. | Pemeriksaan melalui Android Studio tercatat. |
+| Event Radar | Halaman awal untuk pengunjung, daftar event publik, filter, pagination, poster, dan detail. | Pengujian Flutter dan integrasi tercatat. Tes widget lokal mencakup halaman awal. |
+| Tugas Saya | Pencarian, filter, detail, serta pembaruan status tugas yang ditugaskan kepada akun aktif. Status disimpan melalui Laravel dan dapat dibaca dari web. | Pemeriksaan melalui Android Studio tercatat. Panduan Android memuat skenario sinkronisasi status dengan web. |
+| Event Saya dan Event Workspace | Daftar event yang dapat diakses, ringkasan jadwal dan panitia, agregat progres, serta navigasi ke tugas, rapat, dan evaluasi warisan. | Verifikasi backend memakai SQLite terisolasi. |
+| Jadwal & Bentrokan | Ketua dan admin organisasi yang berwenang dapat membaca hasil deteksi bentrokan dari logika yang dipakai bersama web. Pembanding terbatas pada event publik. | Skenario kesamaan hasil web dan API, privasi, dan refresh tercatat. Tes widget tersedia secara lokal. |
+| Meeting Hub | Agenda, notulen, keputusan, dan detail tugas terkait tersedia dalam mode baca. Perubahan status tugas pribadi melalui Tugas Saya. | Skenario akses lintas event dan pembaruan notulen diperiksa memakai SQLite terisolasi. Tes widget detail rapat tersedia secara lokal. |
+| Legacy Insights | Daftar dan detail evaluasi edisi sebelumnya, pratinjau gambar privat, serta akses ke tugas tindak lanjut untuk PIC. | Pemeriksaan melalui Android Studio tercatat. |
+
+Form **Buat Tindak Lanjut** tersedia di source Flutter. Untuk memuat pilihan PIC, menyimpan tugas, dan meminta draf opsional, form memerlukan endpoint tambahan yang masih berupa perubahan Laravel lokal. Backend pada `main` menyediakan alur baca Legacy. Pengujian menyeluruh terhadap form baru belum tercatat.
+
+Artefak APK yang ditemukan adalah build debug lokal. Commit Android di GitHub berisi source dan panduan. File tes dan hasil build tersimpan lokal. Rilis APK bertanda tangan dan hasil verifikasi menyeluruh pada perangkat fisik belum tercatat.
