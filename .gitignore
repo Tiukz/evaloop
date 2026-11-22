@@ -24,10 +24,12 @@ phpunit.xml.dist
 coverage/
 /.idea/
 /.vscode/
-/mobile/
+/mobile/test/
+/mobile/integration_test/
 /docs/
 /Evaloop_Attio_Linear_Paket_Bisnis/
 *.[mM][dD]
+!/mobile/README.md
 *.log
 *.sqlite
 *.sqlite3

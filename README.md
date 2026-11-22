@@ -57,6 +57,10 @@ php -d upload_max_filesize=11M -d post_max_size=55M -S 127.0.0.1:8000 ../vendor/
 
 Poster dan logo mendukung JPG, PNG, serta WebP hingga 2 MiB per gambar. Evaluasi mendukung PDF, DOCX, JPG, PNG, dan WebP. PDF dan gambar bisa dipratinjau, sedangkan DOCX tersedia untuk diunduh. File disimpan di `backend/storage/app/private/` dan dilayani oleh Laravel sesuai izin.
 
+## Aplikasi Android
+
+Lihat [panduan Flutter](mobile/README.md) untuk menjalankan Evaloop di emulator atau HP Android dan mengatur alamat API HTTPS untuk akses dari luar jaringan lokal.
+
 ## Data demo dengan seeder
 
 [EvaloopDemoSeeder](backend/database/seeders/EvaloopDemoSeeder.php) menyiapkan universitas simulasi, fakultas dan prodi contoh, dua organisasi HMTI dan HME, tujuh akun, event seri tahunan, skenario bentrokan, rapat, tugas, dan evaluasi. Gunakan database development terpisah untuk mencoba dataset ini.
