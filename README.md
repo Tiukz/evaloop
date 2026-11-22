@@ -1,5 +1,7 @@
 # Evaloop
 
+**Landing page Evaloop** · [evaloop.tiukzlab.my.id](https://evaloop.tiukzlab.my.id)
+
 Evaloop adalah aplikasi web responsif untuk menemukan kegiatan kampus, mengelola kepanitiaan, dan meneruskan pembelajaran dari satu edisi acara ke edisi berikutnya. Mahasiswa bisa menjelajahi **Event Radar** tanpa akun. Panitia memakai ruang kerja privat untuk menyiapkan acara, mencatat keputusan, membagi tugas, dan mendokumentasikan evaluasi.
 
 Proyek ini dikembangkan untuk **TecFest 2026**. Cakupan aktifnya adalah **University MVP v1.1**, dengan satu universitas pilot dan kegiatan lintas fakultas.

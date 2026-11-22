@@ -1,6 +1,23 @@
 // Native forms/navigation remain authoritative. This module only presents pending/disclosure states.
 const pendingForms = new Map();
 const status = document.getElementById('ev-submit-status');
+const pageProgress = document.getElementById('ev-page-progress');
+let progressTimer;
+
+function startPageProgress() {
+    if (!pageProgress || !pageProgress.hidden || progressTimer !== undefined) return;
+    progressTimer = window.setTimeout(() => {
+        progressTimer = undefined;
+        pageProgress.hidden = false;
+    }, 150);
+}
+
+function isPageNavigation(href, target) {
+    if (target && target.toLowerCase() !== '_self') return false;
+    const current = new URL(window.location.href);
+    const next = new URL(href, current);
+    return ['http:', 'https:'].includes(next.protocol) && next.origin === current.origin;
+}
 
 function resetForm(form) {
     const state = pendingForms.get(form);
@@ -40,14 +57,38 @@ document.addEventListener('submit', (event) => {
     }
     if (status) status.textContent = 'Memproses formulir…';
     // Another handler may cancel submission. Never strand its controls in a pending state.
-    queueMicrotask(() => { if (event.defaultPrevented) resetForm(form); });
+    queueMicrotask(() => {
+        if (event.defaultPrevented) {
+            resetForm(form);
+        } else if (pageProgress && (submitter?.getAttribute('formmethod') || form.method) !== 'dialog'
+            && isPageNavigation(submitter?.getAttribute('formaction') ?? form.action, submitter?.getAttribute('formtarget') ?? form.target)) {
+            startPageProgress();
+        }
+    });
 });
 
 document.addEventListener('click', (event) => {
     const button = event.target instanceof Element ? event.target.closest('button, input[type="submit"], input[type="image"]') : null;
     if (button?.form && pendingForms.has(button.form)) event.preventDefault();
 });
-window.addEventListener('pageshow', () => { for (const form of [...pendingForms.keys()]) resetForm(form); });
+if (pageProgress) window.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+    if (!link || link.hasAttribute('download') || !isPageNavigation(link.href, link.target)) return;
+    const current = new URL(window.location.href);
+    const next = new URL(link.href);
+    if (link.href.includes('#') && next.pathname === current.pathname && next.search === current.search) return;
+    startPageProgress();
+});
+
+window.addEventListener('pageshow', () => {
+    for (const form of [...pendingForms.keys()]) resetForm(form);
+    if (pageProgress) {
+        window.clearTimeout(progressTimer);
+        progressTimer = undefined;
+        pageProgress.hidden = true;
+    }
+});
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const menus = [...document.querySelectorAll('[data-account-menu], [data-filter-menu]')];

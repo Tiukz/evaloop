@@ -6,9 +6,9 @@ use App\Models\Event;
 
 class ScheduleConflicts
 {
-    public function inspect(Event $event): array
+    public function inspect(Event $event, ?int $page = null): array
     {
-        $event->load(['organization', 'targets']);
+        $event->loadMissing(['organization', 'targets']);
         $unavailableReason = match (true) {
             $event->status === 'cancelled' => 'Event dibatalkan; pemeriksaan bentrokan tidak dijalankan.',
             ! $event->starts_at || ! $event->ends_at || $event->starts_at->gte($event->ends_at) => 'Jadwal belum valid; pemeriksaan bentrokan tidak dijalankan.',
@@ -23,7 +23,7 @@ class ScheduleConflicts
         } else {
             $query->whereRaw('1 = 0');
         }
-        $comparisons = $query->paginate(12);
+        $comparisons = $query->paginate(12, page: $page);
         if ($unavailableReason === null) {
             $normalize = static fn (?string $venue): string => mb_strtolower(trim(preg_replace('/\\s+/u', ' ', $venue ?? '') ?? ''), 'UTF-8');
             $venue = $normalize($event->venue);

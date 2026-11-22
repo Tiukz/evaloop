@@ -12,6 +12,7 @@
         'book' => 'book-open',
         'file' => 'file',
         'image' => 'image',
+        'sparkles' => 'sparkles',
         'location' => 'map-pin',
         'search' => 'search',
         'chevron' => 'chevron-down',

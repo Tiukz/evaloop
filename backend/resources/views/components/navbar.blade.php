@@ -2,7 +2,6 @@
 <header class="app-topbar">
     <nav aria-label="Konteks halaman" class="topbar-inner">
         <div class="topbar-breadcrumb"><x-icon name="home" size="16" /><span class="min-w-0 truncate text-slate-700">{{ trim($__env->yieldContent('breadcrumb', 'Ruang kerja')) }}</span></div>
-        @if(!request()->routeIs('events.*', 'home'))<a class="topbar-discovery ev-link" href="{{ route('events.index') }}"><x-icon name="radar" size="16" /><span>Event Radar</span></a>@endif
     </nav>
 </header>
 @else

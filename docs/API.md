@@ -1,6 +1,6 @@
 # Kontrak Rute Web dan API Android — Evaloop v1.1
 
-Bagian 14–16 merangkum kontrak web dan API Android yang tersedia di `main`. Bagian 17 mendokumentasikan perubahan pada kode lokal. Bagian 3 dan 9–13 mencatat riwayat fase rancangan, termasuk respons scaffold 501 yang kemudian diganti dengan mutasi fungsional.
+Bagian 14–17 merangkum kontrak web dan API Android serta menandai endpoint Android yang masih tersedia di backend lokal. Bagian 3 dan 9–13 mencatat riwayat fase rancangan, termasuk respons scaffold 501 yang kemudian diganti dengan mutasi fungsional.
 
 ## 1. Aplikasi web Laravel
 
@@ -409,9 +409,9 @@ Pemeriksaan bentrokan mengembalikan `event`, `warnings`, `unavailable_reason`, s
 
 Meeting Hub memakai `reference_time` dari server untuk mengelompokkan agenda berdasarkan waktu. Notulen dan keputusan dikembalikan sebagai teks. Detail tugas dari rapat selalu mengembalikan `can_update_status: false`. Pembaruan progres melalui Tugas Saya tetap memakai endpoint dan aturan yang sama.
 
-## 17. Tindak lanjut Legacy pada backend lokal
+## 17. Tindak lanjut Legacy di web dan Android
 
-Rute dan field tambahan berikut tersedia pada kode backend lokal. Backend pada `main` menyediakan daftar dan detail evaluasi warisan dari bagian 16. Detail lokal menambahkan `data.can_create_follow_up`, bernilai `true` bila policy `actOn` mengizinkan dan belum ada tugas untuk evaluasi sumber pada event tujuan.
+Rute draf web tersedia di `main` dan memerlukan konfigurasi layanan draf di server. Rute tindak lanjut yang berprefix `/api/v1` masih tersedia di backend lokal. Detail evaluasi Android pada backend lokal menambahkan `data.can_create_follow_up`, bernilai `true` bila policy `actOn` mengizinkan dan belum ada tugas untuk evaluasi sumber pada event tujuan.
 
 | Method | Path | Respons |
 | --- | --- | --- |

@@ -83,6 +83,24 @@
 
     .ev-button[aria-busy="true"] .ev-spinner { animation: ev-spin 800ms linear infinite; }
 
+    .ev-page-progress {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 100;
+        height: 4px;
+        overflow: hidden;
+        pointer-events: none;
+        background: var(--color-ev-mist);
+    }
+    .ev-page-progress::before {
+        content: "";
+        display: block;
+        width: 38%;
+        height: 100%;
+        background: var(--color-ev-primary);
+        animation: ev-page-loading 1.35s ease-in-out infinite;
+    }
+
     .ev-link, .ev-nav-item, .ev-menu-trigger {
         touch-action: manipulation;
         transition-property: color, background-color, border-color, box-shadow, text-decoration-color;
@@ -118,11 +136,16 @@
     .ev-nav-item:hover, .ev-menu-trigger:hover { background-color: var(--color-ev-primary-soft); color: var(--color-ev-primary-hover); }
 }
 @keyframes ev-spin { to { transform: rotate(360deg); } }
+@keyframes ev-page-loading {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(264%); }
+}
 @keyframes ev-notice-in { from { opacity: .65; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
     .ev-button, .ev-link, .ev-nav-item, .ev-menu-trigger, .ev-menu-trigger > svg, .ev-control { transition: none !important; }
     .ev-button, .ev-button:hover, .ev-button:active { transform: none !important; }
     .ev-notice, .ev-spinner { animation: none !important; }
+    .ev-page-progress::before { animation: none; }
 }
 
 /* Lucide chevron-down. Keep the browser's native picker and listboxes. */

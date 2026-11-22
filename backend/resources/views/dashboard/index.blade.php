@@ -88,5 +88,6 @@
     @else
     <section class="pc-start" aria-labelledby="pc-start-heading"><div class="pc-start-visual" aria-hidden="true"><x-icon :name="$universities->isNotEmpty() || auth()->user()->is_platform_admin ? 'organization' : 'radar'" size="36" /></div><div><h2 id="pc-start-heading">@if($universities->isNotEmpty() || auth()->user()->is_platform_admin)Ruang administrasi, akses yang terjaga.@else Kegiatan kampus, dalam jangkauan Anda.@endif</h2><p>@if($universities->isNotEmpty() || auth()->user()->is_platform_admin)Akses institusi tidak otomatis membuka rapat, tugas, dan evaluasi privat kepanitiaan. Pilih organisasi untuk melanjutkan administrasi yang tersedia.@else Temukan kegiatan lintas fakultas melalui Event Radar. Saat Anda bergabung dalam kepanitiaan, tugas dan agenda akan terhubung di ruang ini.@endif</p>@if($universities->isEmpty() && auth()->user()->is_platform_admin)<p>Bootstrap universitas dan admin pertamanya dilakukan melalui proses administratif tepercaya.</p>@endif</div></section>
     @endif
+    @include('dashboard.partials.legacy-intro')
 </div>
 @endsection

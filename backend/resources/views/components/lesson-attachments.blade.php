@@ -1,4 +1,4 @@
-@props(['event', 'lesson', 'editable' => false])
+@props(['event', 'lesson', 'editable' => false, 'imagePreviews' => false])
 
 @if($editable || $lesson->attachments->isNotEmpty())
     <div {{ $attributes }}>
@@ -11,6 +11,13 @@
                 @foreach($lesson->attachments as $attachment)
                     @php($image = str_starts_with($attachment->mime_type, 'image/'))
                     <li class="flex flex-wrap items-center gap-x-3 gap-y-1 py-2">
+                        @if($imagePreviews && $image && $attachment->canPreview())
+                            <div class="basis-full pb-2">
+                                <img class="max-h-64 max-w-full rounded-lg border border-ev-border object-contain"
+                                     src="{{ route('legacy.attachments.show', [$event, $lesson, $attachment, 'preview']) }}"
+                                     alt="{{ $attachment->original_name }}" loading="lazy" decoding="async">
+                            </div>
+                        @endif
                         <div class="flex min-w-0 flex-1 basis-44 items-center gap-3">
                             <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-ev-legacy-soft text-ev-info">
                                 <x-icon :name="$image ? 'image' : 'file'" size="18" />

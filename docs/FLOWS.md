@@ -126,7 +126,7 @@ flowchart TD
 2. Admin organisasi mengelola anggota dan seri. Untuk membuat edisi, pilih organisasi dan seri yang sesuai, isi jadwal WITA dan target prodi, lalu simpan draft.
 3. Admin organisasi menunjuk ketua. Ketua dan admin organisasi dapat mengelola anggota biasa. Sebelum mencabut anggota, alihkan tugas yang masih merujuk ke anggota tersebut, termasuk tugas selesai.
 4. Panitia membuka ringkasan, Meeting Hub, Tugas & Progres, Legacy Insights, dan Panitia sesuai hak akses. Jadwal & Bentrokan tersedia bagi ketua atau admin organisasi yang berwenang.
-5. Ringkasan pada kode web lokal menampilkan cuplikan tugas, rapat, dan pembelajaran edisi sebelumnya. Pengelola kegiatan aktif melihat pemeriksaan jadwal, sedangkan anggota biasa melihat cuplikan tugas pribadinya. Rincian selalu mengikuti izin workspace.
+5. Ringkasan web menampilkan cuplikan tugas, rapat, dan pembelajaran edisi sebelumnya. Pengelola kegiatan aktif melihat pemeriksaan jadwal, sedangkan anggota biasa melihat cuplikan tugas pribadinya. Rincian selalu mengikuti izin workspace.
 
 ## 12. Publikasi dan riwayat kegiatan
 
@@ -146,4 +146,4 @@ Perubahan status tidak menghapus event, kepanitiaan, rapat, tugas, dan evaluasi 
 | Memperbarui tugas pribadi | **Tugas Saya** atau **Tugas & Progres** dari workspace → pilih tugas → pilih status → **Simpan status**. Website membaca status yang sama setelah dimuat ulang. |
 | Membaca Legacy | Workspace → **Legacy Insights** → buka evaluasi warisan dan pratinjau gambar privat. PIC dapat membuka detail tugas tindak lanjut miliknya. |
 
-Pembuatan dan penyuntingan rapat, keputusan, evaluasi, serta persetujuan evaluasi dilakukan di web. Source Android sudah memuat form **Buat Tindak Lanjut** untuk pihak berizin. Memuat pilihan PIC dan menyimpan dari form tersebut memerlukan endpoint tambahan yang masih berada di backend lokal. Lihat [kontrak API](API.md#17-tindak-lanjut-legacy-pada-backend-lokal) dan [panduan Android](../mobile/README.md).
+Pembuatan dan penyuntingan rapat, keputusan, evaluasi, serta persetujuan evaluasi dilakukan di web. Source Android sudah memuat form **Buat Tindak Lanjut** untuk pihak berizin. Memuat pilihan PIC dan menyimpan dari form tersebut memerlukan endpoint tambahan yang masih berada di backend lokal. Lihat [kontrak API](API.md#17-tindak-lanjut-legacy-di-web-dan-android) dan [panduan Android](../mobile/README.md).

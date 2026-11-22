@@ -10,23 +10,22 @@
             <a class="section-link ev-link gap-2" href="{{ route('workspace.legacy', $event) }}">
                 <x-icon name="arrow" size="14" class="rotate-180" /> Legacy Insights
             </a>
-            <h1 class="page-title">Sumber evaluasi</h1>
+            <h1 class="page-title">Evaluasi dari @display($lesson->event->title)</h1>
         </header>
         <article class="legacy-source-document">
-            <header class="mb-5">
-                <h2 class="wrap-anywhere">@display($lesson->event->title)</h2>
-                <x-lesson-attribution :lesson="$lesson" full-time class="mt-1" />
-            </header>
-            <x-lesson-content :lesson="$lesson" />
-            <x-lesson-attachments :event="$event" :lesson="$lesson" class="mt-5" />
+            <x-lesson-attribution :lesson="$lesson" full-time editorial class="mb-5" />
+            <x-lesson-content :lesson="$lesson" editorial />
+            <x-lesson-attachments :event="$event" :lesson="$lesson" image-previews class="mt-5" />
             @if($action)
-                <x-legacy-action :event="$event" :task="$action" />
-            @elseif($canManage)
-                <div class="mt-4 border-t border-ev-border pt-3">
-                    <x-button size="sm" :href="route('legacy.action.create', [$event, $lesson])">Buat Tindak Lanjut</x-button>
-                </div>
+                <x-legacy-action :event="$event" :task="$action" editorial />
             @elseif($lesson->event_id !== $event->id)
-                <p class="mt-4 border-t border-ev-border pt-3 text-sm text-ev-neutral-ink">Belum ada tindak lanjut.</p>
+                <div class="mt-4 border-t border-ev-border pt-3">
+                    <h2>Tindak lanjut</h2>
+                    <p class="mt-1 text-sm text-ev-neutral-ink">Belum ada tugas tindak lanjut pada edisi ini.</p>
+                    @if($canManage)
+                        <x-button :href="route('legacy.action.create', [$event, $lesson])" class="mt-3">Buat Tindak Lanjut</x-button>
+                    @endif
+                </div>
             @endif
         </article>
     </div>

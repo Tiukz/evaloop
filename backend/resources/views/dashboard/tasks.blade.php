@@ -9,7 +9,7 @@
     $filtered = $filters['q'] !== '' || $filters['status'] !== '' || $filters['event'] !== '';
 @endphp
 <div class="my-task-database">
-    <header class="tdb-header"><div><h1>Tugas Saya</h1></div><a class="tdb-text-link ev-link" href="{{ route('my.events') }}">Event Saya <x-icon name="arrow" size="15" /></a></header>
+    <header class="tdb-header"><div><h1>Tugas Saya</h1></div><a class="tdb-text-link ev-link" href="{{ route('my.events') }}">Kegiatan Saya <x-icon name="arrow" size="15" /></a></header>
     
     <div class="tdb-views"><nav aria-label="Tampilan tugas">@foreach(['all' => 'Semua tugas', 'active' => 'Aktif', 'done' => 'Selesai'] as $value => $label)<a href="{{ route('my.tasks', array_merge(Arr::except($filters, ['page', 'status']), ['view' => $value])) }}" @class(['tdb-view', 'tdb-view-selected' => $filters['view'] === $value]) @if($filters['view'] === $value) aria-current="page" @endif>@if($value === 'all')<x-icon name="task" size="16" />@endif{{ $label }}</a>@endforeach</nav><span class="tdb-count" aria-live="polite">{{ $tasks->total() }} tugas</span></div>
     <form method="GET" action="{{ route('my.tasks') }}" class="tdb-toolbar" aria-label="Cari dan filter tugas">

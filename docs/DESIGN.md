@@ -301,7 +301,7 @@ Visually relate **older edition → approved lesson → recommendation → new-e
 Display surfaces hide `[SIMULASI]` prefixes and Demo badges. Storage, seeders, and documentation retain fixture identifiers, and form inputs preserve the stored values. Treat fixtures as simulated data in demonstrations and verification.
 
 
-## 9. Web navigation and workspace changes in the local code
+## 9. Web navigation and workspace overview
 
 - **App navigation.** The sidebar groups Dashboard, Event Radar, Kegiatan Saya, and Tugas Saya under **Navigasi utama**, with Organisasi Saya under **Pengelolaan**. The mobile web trigger is labelled **Menu**. Labels and active states identify the current destination.
 - **Workspace tabs.** The event navigation presents Ringkasan, Jadwal & Bentrokan, Meeting Hub, Tugas & Progres, Legacy Insights, and Panitia. Jadwal & Bentrokan follows the manage policy, and tab labels remain visible on narrow screens when icons are hidden.

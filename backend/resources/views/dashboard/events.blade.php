@@ -1,12 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Event Saya')
-@section('breadcrumb', 'Ruang kerja / Event Saya')
+@section('title', 'Kegiatan Saya')
+@section('breadcrumb', 'Ruang kerja / Kegiatan Saya')
 @section('content')
 <header class="page-header">
     <div>
-        <h1 class="page-title">Event Saya</h1>
+        <h1 class="page-title">Kegiatan Saya</h1>
     </div>
-    <a class="section-link ev-link" href="{{ route('events.index') }}">Event Radar <x-icon name="radar" size="16" /></a>
 </header>
 
 @if($featuredEvent)

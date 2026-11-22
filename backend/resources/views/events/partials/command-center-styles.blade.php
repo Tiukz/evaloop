@@ -10,5 +10,11 @@
 .event-command-center .ecc-lesson{padding:.7rem 0}.event-command-center .ecc-lesson+.ecc-lesson{border-top:1px solid var(--color-ev-border)}.event-command-center .ecc-lesson h3{max-width:70ch;font-size:var(--text-ev-card);font-weight:var(--ev-heading-weight);line-height:var(--ev-heading-leading);letter-spacing:var(--ev-heading-tracking);}.event-command-center .ecc-recommendation,.event-command-center .ecc-decision{margin-top:.4rem;font-size:.875rem;line-height:1.65;max-width:70ch;color:var(--ecc-muted)}.event-command-center .ecc-decision strong{margin-inline-end:.35rem;color:var(--color-ev-ink);font-weight:600}
 @container event-command (min-width:35rem){.event-command-center .ecc-poster{width:8.5rem}.event-command-center .ecc-masthead{grid-template-columns:8.5rem minmax(0,1fr)}.event-command-center .ecc-header-actions{grid-column:2}.event-command-center .ecc-task-row{grid-template-columns:1rem minmax(0,1fr) auto;align-items:center}.event-command-center .ecc-task-row time{grid-column:3;grid-row:1;text-align:right}}
 @container event-command (min-width:58rem){.event-command-center .ecc-masthead{grid-template-columns:8.5rem minmax(0,1fr) auto}.event-command-center .ecc-header-actions{grid-column:3;flex-direction:column;align-items:stretch}.event-command-center .ecc-body{grid-template-columns:minmax(0,2fr) minmax(15rem,.9fr);gap:clamp(1.75rem,3vw,3rem)}}
+@container event-command (width < 35rem){
+    .event-command-center .ecc-masthead{grid-template-columns:minmax(0,1fr) 4rem;gap:.75rem}
+    .event-command-center .ecc-identity{grid-column:1;grid-row:1}
+    .event-command-center .ecc-poster{grid-column:2;grid-row:1;width:4rem;align-self:start}
+    .event-command-center .ecc-header-actions{grid-column:1/-1}
+}
 @media(prefers-reduced-motion:reduce){.event-command-center :is(.ecc-task-row){transition:none}}
 </style>

@@ -12,6 +12,7 @@
     @vite(['resources/css/app.css', 'resources/js/interactions.js'])
 </head>
 <body @class(['app-body', 'app-body-public' => !auth()->check()])>
+    <div id="ev-page-progress" class="ev-page-progress" role="progressbar" aria-label="Memuat halaman" hidden></div>
     <a href="#main" class="app-skip-link">Lewati navigasi</a>
     <p id="ev-submit-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
     @auth<x-sidebar />@endauth

@@ -1,15 +1,15 @@
 @php
     $adminUniversities = auth()->user()->universityMemberships()->active()->where('role', 'admin')->with('university')->get()->pluck('university');
     $groups = [
-        'Pribadi' => [
+        'Navigasi utama' => [
             ['dashboard', 'Dashboard', 'home', ['dashboard']],
+            ['events.index', 'Event Radar', 'radar', ['events.*', 'home']],
+            ['my.events', 'Kegiatan Saya', 'event', ['my.events', 'workspace.*', 'meetings.*', 'decisions.*', 'tasks.*', 'legacy.*', 'evaluations.*']],
             ['my.tasks', 'Tugas Saya', 'task', ['my.tasks']],
         ],
-        'Koordinasi' => [
-            ['my.events', 'Event Saya', 'event', ['my.events', 'workspace.*', 'meetings.*', 'decisions.*', 'tasks.*', 'legacy.*', 'evaluations.*']],
+        'Pengelolaan' => [
             ['my.organizations', 'Organisasi Saya', 'organization', ['my.organizations', 'organizations.*', 'series.*', 'organization.events.*']],
         ],
-        'Jelajahi' => [['events.index', 'Event Radar', 'radar', ['events.*', 'home']]],
     ];
 @endphp
 <aside class="app-sidebar" aria-label="Navigasi aplikasi">
@@ -17,14 +17,14 @@
         <x-icon name="menu" size="20" /><span class="brand-wordmark">evaloop<span class="brand-period">.</span></span><span class="sr-only">Buka navigasi</span>
     </button>
     <details class="shell-navigation" data-shell-navigation>
-        <summary class="mobile-navigation-trigger"><span class="brand-wordmark">evaloop<span class="brand-period">.</span></span><span class="flex items-center gap-2 text-sm">Workspace <x-icon name="chevron" size="16" /></span></summary>
+        <summary class="mobile-navigation-trigger"><span class="brand-wordmark">evaloop<span class="brand-period">.</span></span><span class="flex items-center gap-2 text-sm">Menu <x-icon name="chevron" size="16" /></span></summary>
         <div class="sidebar-body" id="sidebar-content">
             <div class="sidebar-heading">
                 <a href="{{ route('dashboard') }}" class="sidebar-brand"><span class="brand-wordmark">evaloop<span class="brand-period">.</span></span></a>
                 <button type="button" class="sidebar-icon-button" data-sidebar-toggle aria-controls="sidebar-content" aria-expanded="true" aria-label="Ciutkan sidebar" hidden><x-icon name="sidebar" size="19" /></button>
                 <button type="button" class="sidebar-icon-button" data-sidebar-close aria-label="Tutup navigasi" hidden><x-icon name="close" size="20" /></button>
             </div>
-            <nav aria-label="Workspace saya" class="sidebar-groups">
+            <nav aria-label="Navigasi utama" class="sidebar-groups">
                 @foreach($groups as $heading => $items)
                     <section class="sidebar-group"><h2>{{ $heading }}</h2>
                         @foreach($items as [$name, $label, $icon, $patterns])

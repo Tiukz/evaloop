@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\MeetingController;
 use App\Http\Controllers\Web\DecisionController;
 use App\Http\Controllers\Web\TaskController;
+use App\Http\Controllers\Web\ActionDraftController;
 use App\Http\Controllers\Web\LegacyController;
 use App\Http\Controllers\Web\WorkspaceImageController;
 use App\Http\Controllers\Web\LessonAttachmentController;
@@ -52,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/workspace/events/{event}/legacy/sources/{sourceLesson}', [LegacyController::class, 'source'])->name('legacy.source');
     Route::get('/workspace/events/{event}/legacy/sources/{sourceLesson}/action', [LegacyController::class, 'actionForm'])->name('legacy.action.create');
     Route::post('/workspace/events/{event}/legacy/sources/{sourceLesson}/action', [LegacyController::class, 'actionStore'])->name('legacy.action.store');
+    Route::post('/workspace/events/{event}/legacy/sources/{sourceLesson}/action/draft', ActionDraftController::class)
+        ->whereNumber(['event', 'sourceLesson'])->middleware('throttle:5,1,legacy-action-draft-')->name('legacy.action.draft');
     Route::get('/workspace/events/{event}/legacy/sources/{sourceLesson}/attachments/{attachment}/{disposition}', [LessonAttachmentController::class, 'show'])
         ->whereNumber(['event', 'sourceLesson', 'attachment'])->whereIn('disposition', ['preview', 'download'])->name('legacy.attachments.show');
 

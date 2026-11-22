@@ -14,12 +14,12 @@
     $taskLabels = ['todo' => 'Belum dimulai', 'in_progress' => 'Sedang dikerjakan', 'done' => 'Selesai'];
 @endphp
 <div class="event-command-center" data-event-state="{{ $event->status }}">
-    <a class="ecc-back ev-link" href="{{ route('my.events') }}"><x-icon name="arrow" size="14" class="rotate-180" />Event Saya</a>
+    <a class="ecc-back ev-link" href="{{ route('my.events') }}"><x-icon name="arrow" size="14" class="rotate-180" />Kegiatan Saya</a>
     <header class="ecc-masthead">
         <div class="ecc-poster"><x-event-poster :event="$event" /></div>
         <div class="ecc-identity">
             <h1>@display($event->title)</h1>
-            <p class="ecc-organizer">@display($event->organization->name)</p>
+            <p class="ecc-organizer">@display($event->organization->name) · Edisi {{ $start->format('Y') }}</p>
             <div class="ecc-metadata">
                 <x-status-badge :status="$event->status" />
                 <span class="text-ev-info"><x-icon name="event" size="15" /><time datetime="{{ $start->toIso8601String() }}">{{ $start->isoFormat('D MMM YYYY') }}</time></span>
@@ -50,6 +50,10 @@
 
     <div class="ecc-body">
         <div class="ecc-primary">
+            @if($canManage)
+                @include('events.partials.overview-attention')
+                @include('events.partials.overview-learning')
+            @endif
             @if($completed)
                 <section aria-labelledby="ecc-legacy-heading">
                     <div class="ecc-section-head">
@@ -77,7 +81,7 @@
             <section aria-labelledby="ecc-meetings-heading">
                 <div class="ecc-section-head">
                     <h2 id="ecc-meetings-heading">{{ $archived ? 'Keputusan & riwayat rapat' : 'Rapat terdekat' }}</h2>
-                    <a class="ecc-link ev-link" href="{{ route('workspace.meetings', $event) }}">Buka Meeting Hub</a>
+                    <a class="ecc-link ev-link" href="{{ route('workspace.meetings', $event) }}">Lihat daftar rapat</a>
                 </div>
                 @forelse($meetings as $meeting)
                     @php($scheduled = $meeting->scheduled_at->copy()->timezone('Asia/Makassar')->locale('id'))
@@ -105,6 +109,9 @@
             @if($archived)
                 @include('events.partials.overview-tasks')
             @endif
+            @unless($canManage)
+                @include('events.partials.overview-learning')
+            @endunless
         </div>
         <aside class="ecc-context-panel" aria-label="Konteks kegiatan">
             <section class="ecc-team">
@@ -142,9 +149,6 @@
                         <a class="ecc-link ev-link" href="{{ route('series.show', [$event->organization, $event->eventSeries]) }}">Riwayat seri</a>
                     @endcan
                 </section>
-            @endif
-            @if(!$completed && $legacyCount)
-                <a class="ecc-link ev-link" href="{{ route('workspace.legacy', $event) }}"><x-icon name="book" size="16" />{{ $legacyCount }} pembelajaran edisi sebelumnya</a>
             @endif
             <details class="ecc-facts">
                 <summary>Detail kegiatan <x-icon name="chevron" size="15" /></summary>
