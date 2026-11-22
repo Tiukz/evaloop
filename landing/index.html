@@ -3,16 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fafcfb">
-  <meta name="description" content="Evaloop menghubungkan agenda kegiatan, rapat, tugas, dan evaluasi antaredisi organisasi kampus. Dari pengalaman lama menjadi langkah nyata berikutnya.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Evaloop menghubungkan agenda kegiatan, keputusan rapat, dan evaluasi antaredisi organisasi kampus.">
   <meta property="og:title" content="Evaloop — Panitia berganti. Pelajaran jangan ikut hilang.">
-  <meta property="og:description" content="Workspace untuk agenda, koordinasi, dan pembelajaran organisasi kampus.">
+  <meta property="og:description" content="Ruang kerja untuk kegiatan dan regenerasi kepanitiaan kampus.">
   <meta property="og:type" content="website">
   <title>Evaloop — Panitia berganti. Pelajaran jangan ikut hilang.</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="./assets/fonts/geist-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./script.js"></script>
 </head>
@@ -20,157 +18,242 @@
   <a class="skip-link" href="#main">Lewati navigasi</a>
   <header class="site-header">
     <div class="container nav-inner">
-      <a href="#atas" class="logo" aria-label="Evaloop — beranda"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M8.4 16c0-4.3 3-7.2 7.6-7.2 4.6 0 7.6 2.9 7.6 7.2s-3 7.2-7.6 7.2c-4.6 0-7.6-2.9-7.6-7.2Z" stroke="currentColor" stroke-width="2.8"/><path d="M4.9 16c0-6.4 4.7-10.8 11.1-10.8S27.1 9.6 27.1 16 22.4 26.8 16 26.8 4.9 22.4 4.9 16Z" stroke="currentColor" stroke-width="1.25" opacity=".5"/></svg></span>evaloop<span class="logo-stop">.</span></a>
-      <nav class="desktop-nav" aria-label="Navigasi utama"><a href="#mengapa">Mengapa Evaloop</a><a href="#fitur">Platform</a><a href="#proses">Cara kerja</a><a href="#paket">Paket</a></nav>
-      <div class="nav-actions"><a class="nav-text-link" href="#proses">Lihat cara kerja <span aria-hidden="true">↗</span></a><a class="button button-dark" href="#paket">Lihat paket <span aria-hidden="true">↗</span></a></div>
-      <details class="mobile-nav"><summary aria-label="Buka navigasi"><span></span><span></span><span></span></summary><nav aria-label="Navigasi seluler"><a href="#mengapa">Mengapa Evaloop</a><a href="#fitur">Platform</a><a href="#proses">Cara kerja</a><a href="#paket">Paket</a><a href="#implementasi">Implementasi</a></nav></details>
+      <a href="#atas" class="logo" aria-label="Evaloop, beranda">
+        <img src="./favicon.svg" width="27" height="27" alt="">
+        <span>evaloop<span class="logo-stop">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navigasi utama">
+        <a href="#legacy">Legacy Insights</a>
+        <a href="#ai">AI Action Draft</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#paket">Rencana paket</a>
+      </nav>
+      <details class="mobile-nav">
+        <summary>Menu</summary>
+        <nav aria-label="Navigasi seluler">
+          <a href="#legacy">Legacy Insights</a>
+          <a href="#ai">AI Action Draft</a>
+          <a href="#fitur">Fitur</a>
+          <a href="#paket">Rencana paket</a>
+        </nav>
+      </details>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="atas">
+  <main id="main" tabindex="-1">
+    <section class="hero" id="atas" aria-labelledby="hero-title">
       <div class="container">
-        <div class="hero-eyebrow"><span class="eyebrow-line"></span> SOFTWARE FOR STUDENT ORGANIZATIONS <span class="eyebrow-index">/ 2026</span></div>
-        <div class="hero-heading-wrap">
-          <h1>Panitia berganti.<br><span>Pelajaran jangan<br class="mobile-only"> ikut hilang.</span></h1>
-          <div class="hero-side-mark" aria-hidden="true"><span>26</span><span class="side-rule"></span><span>27</span></div>
-        </div>
-        <div class="hero-bottom">
-          <p>Agenda kegiatan, keputusan rapat, pekerjaan panitia, dan evaluasi tahunan—terhubung dalam satu workspace. Supaya setiap edisi bisa melangkah lebih jauh dari sebelumnya.</p>
-          <div class="hero-cta"><a href="#fitur" class="button button-teal">Kenali Evaloop <span aria-hidden="true">↗</span></a><a href="#proses" class="text-link">Lihat alur kerjanya <span aria-hidden="true">↓</span></a></div>
-        </div>
-        <div class="hero-screen" aria-label="Cuplikan fitur Legacy Insights Evaloop dari sesi pengembangan">
-          <div class="screen-chrome"><div class="chrome-left"><span class="chrome-symbol"></span><span class="chrome-product">evaloop <span>/</span> Event Workspace <span>/</span> Legacy Insights</span></div><span class="chrome-right">PREVIEW · DATA SIMULASI</span></div>
-          <div class="screen-content"><div class="screen-preview-head"><span>KNOWLEDGE → ACTION</span><strong>Lomba A · Edisi 2026 → 2027</strong></div><img src="./assets/legacy.webp" width="1500" height="763" alt="Cuplikan aplikasi Evaloop: evaluasi edisi 2026 dengan rekomendasi dan tautan tugas tindak lanjut" fetchpriority="high"></div>
-        </div>
-        <div class="hero-caption"><span>01 / CONTEXT THAT LASTS</span><span>Cuplikan aplikasi pada proses pengembangan. Konten merupakan data simulasi.</span></div>
-      </div>
-    </section>
-
-    <section class="problem section-space" id="mengapa">
-      <div class="container">
-        <div class="section-topline"><span>THE PROBLEM</span><span>01 — 04</span></div>
-        <div class="problem-heading"><h2>Setiap tahun,<br>jangan mulai <em>dari nol.</em></h2><p>Organisasi kampus terus berkembang, tetapi proses kerja sering bergantung pada obrolan, file yang tersebar, dan ingatan pengurus sebelumnya. Evaloop dibangun untuk menghubungkan bagian-bagian itu.</p></div>
-        <div class="problem-columns">
-          <article><span class="item-number">01 /</span><h3>Agenda sulit dipetakan.</h3><p>Jadwal kegiatan lintas himpunan tersebar dan potensi bentrokan baru diketahui saat persiapan berjalan.</p></article>
-          <article><span class="item-number">02 /</span><h3>Rapat berhenti di catatan.</h3><p>Keputusan sudah dibuat, tetapi siapa yang mengerjakan dan sejauh mana progresnya belum selalu jelas.</p></article>
-          <article><span class="item-number">03 /</span><h3>Evaluasi berhenti di arsip.</h3><p>Temuan penting dari edisi sebelumnya sulit dipakai sebagai dasar tindakan panitia baru.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="statement" aria-label="Gagasan utama Evaloop"><div class="container statement-inner"><span class="statement-tag">WHAT CHANGES</span><p>Yang dibutuhkan bukan lebih banyak catatan. <span>Yang dibutuhkan adalah kesinambungan.</span></p><div class="statement-foot"><span>PLANNING</span><span class="line"></span><span>COORDINATION</span><span class="line"></span><span>LEARNING</span></div></div></section>
-
-    <section class="features section-space" id="fitur">
-      <div class="container">
-        <div class="section-topline"><span>THE PLATFORM</span><span>02 — 04</span></div>
-        <div class="features-intro"><h2>Satu platform.<br><span>Tiga pekerjaan penting.</span></h2><p>Tidak mencoba menggantikan setiap alat organisasi. Evaloop berfokus pada bagian yang harus tetap terhubung: kegiatan, koordinasi, dan pembelajaran.</p></div>
-
-        <article class="feature-row feature-one"><div class="feature-copy"><span class="feature-number">01 <span>/ DISCOVER</span></span><h3>Tahu apa yang<br>sedang terjadi.</h3><p>Event Radar memperlihatkan kegiatan yang dipublikasikan organisasi kampus. Saat menyusun agenda, panitia juga mendapat peringatan jika jadwal, tempat, atau sasaran kegiatan beririsan.</p><div class="feature-points"><span>Event Radar</span><span>Jadwal &amp; bentrokan</span><span>Event Series</span></div></div><div class="feature-image surface-radar"><div class="visual-top"><span>EVENT RADAR</span><span>01 — DISCOVERY</span></div><img src="./assets/radar.webp" width="1350" height="698" loading="lazy" alt="Cuplikan Event Radar dengan daftar poster kegiatan pada aplikasi Evaloop"><div class="visual-bottom">Jelajahi agenda lintas organisasi <span aria-hidden="true">↗</span></div></div></article>
-
-        <article class="feature-row feature-two"><div class="feature-copy"><span class="feature-number">02 <span>/ COORDINATE</span></span><h3>Dari rapat<br>menjadi pekerjaan.</h3><p>Meeting Hub menyimpan catatan dan keputusan. Dari sana, tugas bisa diberikan kepada panitia dan progresnya dilacak—tanpa kehilangan konteks awal keputusan.</p><div class="feature-points"><span>Meeting Hub</span><span>Keputusan</span><span>Tugas &amp; progres</span></div></div><div class="feature-image surface-meeting"><div class="visual-top"><span>MEETING HUB</span><span>02 — EXECUTION</span></div><img src="./assets/meeting.webp" width="1280" height="842" loading="lazy" alt="Cuplikan detail rapat Evaloop yang memuat catatan rapat, keputusan, dan tugas terkait"><div class="visual-bottom">Keputusan yang dapat ditelusuri <span aria-hidden="true">↗</span></div></div></article>
-
-        <article class="feature-row feature-three"><div class="feature-copy"><span class="feature-number">03 <span>/ REMEMBER</span></span><h3>Pengalaman lama.<br><span>Aksi baru.</span></h3><p>Legacy Insights menyimpan permasalahan, rekomendasi, dan gambar pendukung dari evaluasi. Setelah disetujui, pelajaran itu dapat dibaca panitia edisi berikutnya dan secara eksplisit dijadikan tugas tindak lanjut.</p><div class="feature-points"><span>Evaluasi bergambar</span><span>Persetujuan</span><span>Legacy-to-Action</span></div></div><div class="feature-image surface-legacy"><div class="visual-top"><span>LEGACY INSIGHTS</span><span>03 — CONTINUITY</span></div><div class="legacy-visual" aria-label="Ilustrasi alur pembelajaran antaredisi"><div class="legacy-source"><span>EDISI SUMBER · 2026</span><strong>Antrean registrasi terlalu panjang.</strong><small>Rekomendasi: siapkan dua jalur dan lakukan gladi bersih.</small><div class="attachment"><span aria-hidden="true">▧</span> Foto kondisi registrasi <span>GAMBAR</span></div></div><div class="legacy-link" aria-hidden="true"><span>APPROVED</span><i></i><b>↗</b></div><div class="legacy-target"><span>EDISI BERIKUTNYA · 2027</span><strong>Rancang dua jalur registrasi</strong><small>Tugas ditautkan ke evaluasi 2026</small><div class="task-progress"><span>Sedang dikerjakan</span><i></i></div></div></div><div class="visual-bottom">Pembelajaran tidak berhenti di arsip <span aria-hidden="true">↗</span></div></div></article>
-      </div>
-    </section>
-
-    <section class="process section-space" id="proses">
-      <div class="container">
-        <div class="section-topline"><span>HOW EVALOOP WORKS</span><span>03 — 04</span></div>
-        <div class="process-layout"><div class="process-lead"><h2>Satu alur.<br>Lintas edisi.</h2><p>Alur ini menunjukkan proses operasional yang didukung Evaloop, dari persiapan kegiatan sampai pembelajaran yang diteruskan ke kepanitiaan berikutnya.</p><div class="process-pill"><span class="process-dot"></span> Penetapan tugas tetap dilakukan pengguna, bukan AI otomatis.</div></div><ol class="process-steps"><li><span class="step-no">01</span><div><h3>Rencanakan kegiatan.</h3><p>Organisasi membuat kegiatan dan edisi tahunan, memeriksa jadwal, lalu memublikasikan informasi event.</p></div></li><li><span class="step-no">02</span><div><h3>Koordinasikan panitia.</h3><p>Panitia mencatat rapat dan keputusan yang diperlukan untuk menjalankan acara.</p></div></li><li><span class="step-no">03</span><div><h3>Jalankan dan pantau.</h3><p>Keputusan ditindaklanjuti lewat tugas dengan penanggung jawab, tenggat, dan progres.</p></div></li><li><span class="step-no">04</span><div><h3>Catat evaluasi beserta gambar.</h3><p>Permasalahan, rekomendasi, dan bukti gambar disimpan pada evaluasi kegiatan.</p></div></li><li><span class="step-no">05</span><div><h3>Setujui pembelajaran.</h3><p>Admin organisasi menentukan evaluasi yang layak diwariskan dalam Event Series terkait.</p></div></li><li><span class="step-no">06</span><div><h3>Teruskan menjadi aksi.</h3><p>Panitia edisi berikutnya membaca evaluasi yang disetujui dan membuat tugas baru yang tertaut ke sumbernya.</p></div></li></ol></div>
-      </div>
-    </section>
-
-    <section class="scenario section-space" id="contoh"><div class="container"><div class="section-topline"><span>FROM ONE EDITION TO THE NEXT</span><span>04 — 04</span></div><div class="scenario-heading"><h2>Bukan teori.<br><span>Ini cara alurnya terbentuk.</span></h2><p>Contoh berikut memakai data simulasi HMTI (Teknologi Informasi) dan HME (Elektro) untuk menunjukkan penggunaan Evaloop.</p></div><div class="scenario-grid"><div class="scenario-panel scenario-past"><span>HMTI / 2026</span><div class="scenario-year">26<span>—</span></div><h3>Registrasi peserta menumpuk.</h3><p>Panitia mencatat evaluasi, memberi rekomendasi dua jalur registrasi, lalu menyetujui pembelajaran untuk edisi berikutnya.</p></div><div class="scenario-panel scenario-next"><span>HMTI / 2027 <i class="blink-dot"></i></span><div class="scenario-year">27<span>↗</span></div><h3>Evaluasi jadi tugas persiapan.</h3><p>Panitia baru membuka sumber evaluasi 2026 dan menautkan rekomendasinya ke tugas nyata. Sementara itu, jadwal HME dapat diperiksa sebagai pembanding bentrokan.</p></div></div><p class="scenario-caption">Ilustrasi skenario produk, bukan klaim pilot resmi atau hasil uji pengguna.</p></div></section>
-
-    <section class="pricing section-space" id="paket">
-      <div class="container">
-        <div class="section-topline"><span>PAKET EVALOOP</span><span>MODEL BERLANGGANAN PER ORGANISASI / KAMPUS</span></div>
-        <div class="pricing-intro">
-          <h2>Sesuai skala.<br><span>Tetap terhubung.</span></h2>
-          <div><p>Mulai dari satu himpunan, lalu perluas ke tingkat kampus. Semua paket dirancang di sekitar alur yang sama: agenda, koordinasi, dan pembelajaran yang berkelanjutan.</p><p class="pricing-context">Satu harga untuk organisasi atau institusi, bukan biaya tambahan per mahasiswa.</p></div>
-        </div>
-        <div class="plans">
-          <article class="plan">
-            <div class="plan-top"><span>01 / UNTUK HIMPUNAN</span><span>ORGANISASI</span></div>
-            <h3>Organisasi</h3>
-            <p class="plan-desc">Untuk satu himpunan yang ingin menata kegiatan dan regenerasi kepanitiaan secara konsisten.</p>
-            <div class="plan-price"><span>Rp199.000</span> <small>/ bulan</small></div>
-            <div class="plan-rule"></div>
-            <p class="plan-list-title">Cakupan layanan yang direncanakan</p>
-            <ul>
-              <li>Workspace untuk satu organisasi</li>
-              <li>Event Radar, rapat, keputusan, dan tugas</li>
-              <li>Legacy Insights dan lampiran gambar</li>
-              <li>Panduan penggunaan untuk pengurus</li>
-            </ul>
-            <a class="plan-link" href="#implementasi">Pelajari implementasi <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="plan plan-featured">
-            <div class="plan-top"><span>02 / UNTUK SATU KAMPUS</span><span class="plan-recommend">PALING SESUAI</span></div>
-            <h3>Kampus</h3>
-            <p class="plan-desc">Untuk koordinasi lintas himpunan dan pengelolaan pengetahuan organisasi di satu universitas.</p>
-            <div class="plan-price"><span>Rp699.000</span> <small>/ bulan</small></div>
-            <div class="plan-rule"></div>
-            <p class="plan-list-title">Mencakup paket Organisasi, ditambah</p>
-            <ul>
-              <li>Cakupan lintas organisasi dalam satu kampus</li>
-              <li>Event Radar dan deteksi bentrokan lintas himpunan</li>
-              <li>Event Series dan evaluasi antaredisi</li>
-              <li>Pendampingan awal penggunaan untuk admin kampus</li>
-            </ul>
-            <a class="plan-link" href="#implementasi">Lihat alur penerapan <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="plan">
-            <div class="plan-top"><span>03 / PENDAMPINGAN</span><span>INSTITUSI</span></div>
-            <h3>Kampus Plus</h3>
-            <p class="plan-desc">Untuk kampus yang membutuhkan bantuan implementasi dan pengelolaan operasional yang lebih intensif.</p>
-            <div class="plan-price"><span>Rp1.499.000</span> <small>/ bulan</small></div>
-            <div class="plan-rule"></div>
-            <p class="plan-list-title">Mencakup paket Kampus, ditambah</p>
-            <ul>
-              <li>Sesi onboarding admin dan pengurus organisasi</li>
-              <li>Bantuan konfigurasi awal dan penataan struktur</li>
-              <li>Pendampingan penggunaan berkala</li>
-              <li>Prioritas konsultasi teknis sesuai kesepakatan</li>
-            </ul>
-            <a class="plan-link" href="#implementasi">Lihat alur penerapan <span aria-hidden="true">↗</span></a>
-          </article>
-        </div>
-        <p class="pricing-note">Simulasi skema harga untuk presentasi TecFest 2026, bukan penawaran komersial aktif. Harga, kapasitas, dan layanan pendampingan masih perlu divalidasi melalui pilot dan perhitungan biaya operasional. Pembayaran/berlangganan belum tersedia dalam MVP.</p>
-      </div>
-    </section>
-
-    <section class="access" id="implementasi">
-      <div class="container access-layout">
-        <div>
-          <div class="section-topline light"><span>IMPLEMENTASI</span><span>DARI PILOT KE PEMAKAIAN</span></div>
-          <h2>Mulai kecil.<br>Lanjut bersama.</h2>
-          <p>Evaloop dirancang untuk diuji dari kegiatan satu himpunan, lalu berkembang menjadi koordinasi lintas organisasi dalam satu kampus. Fokusnya bukan instalasi sebanyak mungkin, tetapi memastikan alur kerja benar-benar terpakai.</p>
-          <div class="access-actions"><a class="button button-light" href="#proses">Lihat cara kerja <span aria-hidden="true">↗</span></a><a class="access-subtle" href="#paket">Bandingkan paket ↑</a></div>
-        </div>
-        <div class="terminal rollout-steps" aria-label="Tahapan rencana implementasi Evaloop">
-          <div class="terminal-header"><span><i></i> TAHAP IMPLEMENTASI</span><span>01 — 04</span></div>
-          <div class="terminal-body">
-            <div><span class="terminal-count">01</span><span><strong>Identifikasi kebutuhan</strong><small>Pilih organisasi pilot, pemilik proses, dan alur kegiatan yang ingin diperbaiki.</small></span></div>
-            <div><span class="terminal-count">02</span><span><strong>Penyiapan workspace</strong><small>Atur organisasi, admin, kegiatan, dan panitia sesuai cakupan yang disepakati.</small></span></div>
-            <div><span class="terminal-count">03</span><span><strong>Uji penggunaan</strong><small>Gunakan rapat, tugas, serta evaluasi kegiatan dalam skenario nyata.</small></span></div>
-            <div><span class="terminal-count">04</span><span><strong>Evaluasi dan perluasan</strong><small>Tinjau hambatan penggunaan sebelum memperluas ke organisasi lain.</small></span></div>
-            <div class="terminal-footer"><span class="terminal-light"></span> Alur pilot yang diusulkan, belum program layanan aktif</div>
+        <div class="hero-copy" id="mengapa">
+          <h1 id="hero-title"><span>Panitia berganti.</span> <span>Pelajaran jangan ikut hilang.</span></h1>
+          <div class="hero-intro">
+            <p>Kelola agenda, keputusan rapat, dan tugas panitia dalam satu ruang kerja. Simpan evaluasi agar panitia berikutnya tahu apa yang perlu diperbaiki.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#legacy">Lihat Legacy Insights</a>
+              <a class="button button-quiet" href="#fitur">Jelajahi fitur</a>
+            </div>
           </div>
         </div>
+
+        <figure class="product-figure hero-figure" id="radar-preview">
+          <div class="hero-stage">
+            <a class="product-frame" href="./assets/radar.webp" aria-label="Buka gambar Event Radar ukuran penuh">
+              <img src="./assets/radar.webp" width="1800" height="1379" alt="Event Radar Evaloop dengan pencarian dan filter kegiatan serta poster Seminar Teknologi, Workshop AI, dan Diskusi Matematika." fetchpriority="high">
+            </a>
+          </div>
+          <figcaption><strong>Event Radar</strong><span>Cuplikan aplikasi dengan data simulasi</span></figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="faq section-space" id="faq"><div class="container faq-layout"><div><div class="section-topline"><span>SEPUTAR EVALOOP</span><span>FAQ</span></div><h2>Yang perlu<br>diketahui.</h2></div><div class="faq-list">
-      <details><summary>Bagaimana model harga Evaloop?<span aria-hidden="true">+</span></summary><p>Rencana bisnis menggunakan biaya tetap per organisasi atau kampus, bukan per akun mahasiswa. Harga di halaman ini adalah simulasi untuk presentasi TecFest 2026, belum penawaran berlangganan aktif.</p></details>
-      <details><summary>Apa bedanya paket Organisasi dan Kampus?<span aria-hidden="true">+</span></summary><p>Paket Organisasi ditujukan untuk satu himpunan; paket Kampus mencakup koordinasi lintas organisasi di satu universitas. Perbedaan ini merupakan rancangan layanan dan cakupan pendampingan, belum pembatasan berlangganan yang diterapkan dalam aplikasi.</p></details>
-      <details><summary>Apakah Evaloop sudah tersedia sebagai SaaS online?<span aria-hidden="true">+</span></summary><p>Belum. Saat ini Evaloop merupakan MVP web yang telah dibuat untuk demonstrasi kompetisi. Situs ini adalah landing page promosi dan penjelasan model layanan, bukan portal langganan atau aplikasi Laravel yang di-host secara publik.</p></details>
-      <details><summary>Apakah evaluasi bisa menyertakan gambar?<span aria-hidden="true">+</span></summary><p>Ya. Evaloop mendukung unggah gambar pendukung pada evaluasi. Hak aksesnya tetap mengikuti kewenangan terhadap evaluasi terkait dan tidak otomatis publik.</p></details>
-      <details><summary>Apakah rekomendasi evaluasi otomatis menjadi tugas?<span aria-hidden="true">+</span></summary><p>Tidak. Setelah evaluasi disetujui dan diwariskan, panitia edisi berikutnya memilih secara eksplisit untuk membuat tugas tindak lanjut yang terhubung ke evaluasi sumber.</p></details>
-      <details><summary>Apakah HMTI dan HME sudah menjadi pelanggan?<span aria-hidden="true">+</span></summary><p>Tidak. HMTI dan HME digunakan sebagai konteks simulasi untuk memperlihatkan skenario koordinasi lintas organisasi. Tidak ada klaim kerja sama atau implementasi resmi institusi.</p></details>
-    </div></div></section>
+    <section class="content-section legacy" id="legacy" tabindex="-1" aria-labelledby="legacy-title">
+      <div class="container">
+        <header class="section-heading">
+          <p class="section-label">Legacy Insights</p>
+          <h2 id="legacy-title">Dari evaluasi menjadi tindakan.</h2>
+          <p>Rekomendasi dari edisi sebelumnya bisa ditindaklanjuti oleh panitia baru. Tugas yang dibuat tetap terhubung ke evaluasi sumber.</p>
+        </header>
 
-  <footer class="footer"><div class="container"><div class="footer-main"><div><a href="#atas" class="logo footer-logo"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M8.4 16c0-4.3 3-7.2 7.6-7.2 4.6 0 7.6 2.9 7.6 7.2s-3 7.2-7.6 7.2c-4.6 0-7.6-2.9-7.6-7.2Z" stroke="currentColor" stroke-width="2.8"/><path d="M4.9 16c0-6.4 4.7-10.8 11.1-10.8S27.1 9.6 27.1 16 22.4 26.8 16 26.8 4.9 22.4 4.9 16Z" stroke="currentColor" stroke-width="1.25" opacity=".5"/></svg></span>evaloop<span class="logo-stop">.</span></a><p>Untuk kegiatan yang lebih terarah<br>dan pembelajaran yang berlanjut.</p></div><div class="footer-links"><a href="#fitur">Platform</a><a href="#proses">Cara kerja</a><a href="#paket">Paket</a><a href="#implementasi">Implementasi <span aria-hidden="true">↗</span></a></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Evaloop. MVP · Konsep bisnis TecFest 2026.</span><span>Designed for continuity, not clutter.</span></div></div></footer>
+        <div class="legacy-layout" id="proses">
+          <figure class="product-figure" data-reveal>
+            <a class="product-frame" href="./assets/legacy.webp" aria-label="Buka gambar Legacy Insights ukuran penuh">
+              <img src="./assets/legacy.webp" width="1392" height="828" loading="lazy" decoding="async" alt="Evaluasi Innovatech Challenge 2026 menampilkan masalah antrean, rekomendasi, serta tugas Rancang dua jalur registrasi dan tenggatnya.">
+            </a>
+            <figcaption id="contoh"><strong>Innovatech Challenge 2026–2027</strong></figcaption>
+          </figure>
+
+          <ol class="legacy-flow" aria-label="Alur evaluasi antaredisi">
+            <li>
+              <h3>Catat permasalahan</h3>
+              <p>Antrean panjang membuat registrasi peserta terlambat.</p>
+            </li>
+            <li>
+              <h3>Wariskan rekomendasi</h3>
+              <p>Setelah disetujui, usulan dua jalur registrasi dan gladi bersih tersedia untuk panitia edisi berikutnya.</p>
+            </li>
+            <li>
+              <h3>Buat tugas tindak lanjut</h3>
+              <p>Lewat Legacy-to-Action, panitia dapat membuat tugas, menetapkan penanggung jawab, dan memantau progres.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section action-draft" id="ai" tabindex="-1" aria-labelledby="ai-title">
+      <div class="container action-draft-layout">
+        <header class="section-heading">
+          <p class="section-label">AI Action Draft</p>
+          <h2 id="ai-title">Susun draf dari evaluasi.</h2>
+          <p>Di form tindak lanjut, pilih <strong>Bantu Susun dengan AI</strong> untuk mendapat usulan judul dan deskripsi berdasarkan evaluasi yang sudah diwariskan.</p>
+          <p>Panitia meninjau draf, menentukan PIC dan tenggat, lalu menyimpan tugas.</p>
+        </header>
+        <figure class="product-figure" data-reveal>
+          <a class="product-frame" href="./assets/ai-action-draft.webp" aria-label="Buka gambar AI Action Draft ukuran penuh">
+            <img src="./assets/ai-action-draft.webp" width="1730" height="891" loading="lazy" decoding="async" alt="Form Buat Tindak Lanjut menampilkan evaluasi sumber dan tombol Bantu Susun dengan AI di bawah judul tugas.">
+          </a>
+          <figcaption><strong>Form Buat Tindak Lanjut</strong></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="content-section features" id="fitur" tabindex="-1" aria-labelledby="features-title">
+      <div class="container">
+        <header class="section-heading">
+          <h2 id="features-title">Koordinasi kegiatan kampus.</h2>
+          <p>Temukan agenda lintas organisasi dan teruskan keputusan rapat ke tugas yang bisa dilacak.</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="agenda">
+            <h3>Rencanakan jadwal kegiatan</h3>
+            <dl class="feature-details">
+              <div>
+                <dt>Event Radar</dt>
+                <dd>Cari kegiatan publik berdasarkan organisasi, fakultas, prodi, atau tanggal.</dd>
+              </div>
+              <div>
+                <dt>Jadwal &amp; Bentrokan</dt>
+                <dd>Periksa irisan waktu, tempat, dan target peserta sebelum memublikasikan kegiatan.</dd>
+              </div>
+            </dl>
+            <figure class="schedule">
+              <figcaption>Contoh jadwal pada 15 Mei 2027</figcaption>
+              <div class="schedule-hours" aria-hidden="true"><span>09.00</span><span>10.00</span><span>11.00</span><span>12.00</span><span>13.00</span></div>
+              <div class="schedule-event">
+                <p>Seminar Teknologi <span>09.00–12.00 WITA</span></p>
+                <div class="schedule-track" aria-hidden="true"><span></span></div>
+              </div>
+              <div class="schedule-event">
+                <p>Workshop AI <span>10.00–13.00 WITA</span></p>
+                <div class="schedule-track" aria-hidden="true"><span></span></div>
+              </div>
+              <p class="schedule-caption">Dalam data simulasi, dua kegiatan ini beririsan pukul 10.00–12.00 WITA di Aula Teknik.</p>
+            </figure>
+            <a class="inline-link" href="#radar-preview">Lihat cuplikan Event Radar</a>
+          </article>
+
+          <article class="meetings">
+            <h3>Teruskan keputusan rapat ke tugas</h3>
+            <p>Simpan catatan dan keputusan di <strong>Meeting Hub</strong>. Tetapkan PIC, tenggat, dan pantau status di <strong>Tugas &amp; Progres</strong>.</p>
+            <figure class="product-figure" data-reveal>
+              <a class="product-frame" href="./assets/meeting.webp" aria-label="Buka gambar Meeting Hub ukuran penuh">
+                <img src="./assets/meeting.webp" width="1392" height="1154" loading="lazy" decoding="async" alt="Rapat teknis Innovatech Challenge 2027 dengan catatan, keputusan, serta tugas merancang jalur registrasi dan menjadwalkan gladi bersih.">
+              </a>
+              <figcaption><strong>Meeting Hub</strong><span>Catatan rapat, keputusan, dan tugas terkait</span></figcaption>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section pricing" id="paket" tabindex="-1" aria-labelledby="pricing-title">
+      <div class="container">
+        <header class="section-heading">
+          <h2 id="pricing-title">Rencana paket</h2>
+          <p>Simulasi harga untuk TecFest 2026. Langganan dan pembayaran belum tersedia pada MVP.</p>
+        </header>
+        <ul class="plan-grid" aria-label="Simulasi paket harga">
+          <li class="plan-card">
+            <div class="plan-top"><span>01 / Untuk himpunan</span><span>Organisasi</span></div>
+            <h3>Organisasi</h3>
+            <p>Untuk satu himpunan yang ingin menata kegiatan dan serah terima kepanitiaan.</p>
+            <p class="plan-price"><strong>Rp199.000</strong> / bulan</p>
+            <div class="plan-benefits">
+              <p>Cakupan layanan yang direncanakan</p>
+              <ul>
+                <li>Ruang kerja untuk satu organisasi</li>
+                <li>Event Radar, rapat, keputusan, dan tugas</li>
+                <li>Legacy Insights dan lampiran evaluasi</li>
+                <li>Panduan penggunaan untuk pengurus</li>
+              </ul>
+            </div>
+            <a class="button button-quiet" href="#proses">Lihat cara kerja</a>
+          </li>
+          <li class="plan-card plan-featured">
+            <div class="plan-top"><span>02 / Untuk satu kampus</span><span class="plan-badge">Paling sesuai</span></div>
+            <h3>Kampus</h3>
+            <p>Untuk koordinasi lintas himpunan dan pengelolaan evaluasi di satu universitas.</p>
+            <p class="plan-price"><strong>Rp699.000</strong> / bulan</p>
+            <div class="plan-benefits">
+              <p>Mencakup paket Organisasi, ditambah</p>
+              <ul>
+                <li>Cakupan lintas organisasi dalam satu kampus</li>
+                <li>Event Radar dan deteksi bentrokan lintas himpunan</li>
+                <li>Event Series dan evaluasi antaredisi</li>
+                <li>Pendampingan awal untuk admin kampus</li>
+              </ul>
+            </div>
+            <a class="button button-primary" href="#proses">Lihat cara kerja</a>
+          </li>
+          <li class="plan-card">
+            <div class="plan-top"><span>03 / Pendampingan</span><span>Institusi</span></div>
+            <h3>Kampus Plus</h3>
+            <p>Untuk kampus yang membutuhkan bantuan penyiapan dan pendampingan berkala.</p>
+            <p class="plan-price"><strong>Rp1.499.000</strong> / bulan</p>
+            <div class="plan-benefits">
+              <p>Mencakup paket Kampus, ditambah</p>
+              <ul>
+                <li>Sesi onboarding admin dan pengurus</li>
+                <li>Bantuan konfigurasi dan penataan struktur</li>
+                <li>Pendampingan penggunaan berkala</li>
+                <li>Prioritas konsultasi teknis sesuai kesepakatan</li>
+              </ul>
+            </div>
+            <a class="button button-quiet" href="#proses">Lihat cara kerja</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section questions" id="faq" aria-labelledby="faq-title">
+      <div class="container questions-layout">
+        <h2 id="faq-title">Pertanyaan umum</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Siapa yang bisa melihat evaluasi?</summary>
+            <p>Evaluasi dan lampirannya mengikuti izin kepanitiaan. Panitia edisi berikutnya yang berwenang dapat melihat evaluasi yang sudah disetujui untuk diwariskan.</p>
+          </details>
+          <details>
+            <summary>Apakah tugas dibuat secara otomatis?</summary>
+            <p>Panitia memilih rekomendasi yang akan ditindaklanjuti, lalu membuat tugas yang terhubung ke evaluasi sumber.</p>
+          </details>
+          <details>
+            <summary>Apakah organisasi di cuplikan adalah pelanggan?</summary>
+            <p>HMTI dan HME adalah contoh dalam data simulasi untuk demonstrasi TecFest 2026.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#atas" class="logo" aria-label="Evaloop, kembali ke atas">
+        <img src="./favicon.svg" width="27" height="27" alt="">
+        <span>evaloop<span class="logo-stop">.</span></span>
+      </a>
+      <p>© 2026 Evaloop · MVP TecFest 2026</p>
+    </div>
+  </footer>
 </body>
 </html>
