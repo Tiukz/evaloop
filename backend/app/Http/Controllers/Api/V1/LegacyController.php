@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Lesson;
 use App\Models\LessonAttachment;
 use App\Models\Task;
+use App\Support\LegacyFollowUp;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -57,12 +58,36 @@ class LegacyController extends Controller
         $action = $event->tasks()->where('source_lesson_id', $lesson->id)->orderBy('id')->first();
 
         return $this->respond(['data' => $this->lessonData($lesson, $action, $request->user()->id) + [
+            'can_create_follow_up' => $action === null && Gate::allows('actOn', [$lesson, $event]),
             'images' => $lesson->attachments->map(fn (LessonAttachment $file) => [
                 'id' => $file->id,
                 'name' => $file->original_name,
                 'size_bytes' => (int) $file->size_bytes,
             ]),
         ]]);
+    }
+
+    public function actionForm(Event $event, Lesson $sourceLesson): JsonResponse
+    {
+        Gate::authorize('actOn', [$sourceLesson, $event]);
+        if ($event->tasks()->where('source_lesson_id', $sourceLesson->id)->exists()) {
+            return response()->json(['message' => 'Tindak lanjut sudah dibuat.'], 409);
+        }
+
+        return $this->respond(['data' => [
+            'event' => $this->eventData($event),
+            'members' => $event->memberships()->with('user:id,name')->get()->map(
+                fn ($membership) => ['id' => $membership->user_id, 'name' => $membership->user->name]
+            ),
+        ]]);
+    }
+
+    public function actionStore(Request $request, Event $event, Lesson $sourceLesson, LegacyFollowUp $followUp): JsonResponse
+    {
+        [$task, $created] = $followUp->store($request, $event, $sourceLesson);
+
+        return $this->respond(['data' => ['id' => $task->id, 'created' => $created]])
+            ->setStatusCode($created ? 201 : 200);
     }
 
     private function eventData(Event $event): array

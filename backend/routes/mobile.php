@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\PersonalTaskController;
 use App\Http\Controllers\Api\V1\ScheduleConflictController;
 use App\Http\Controllers\Api\V1\SessionController;
 use App\Http\Controllers\Api\V1\WorkspaceController;
+use App\Http\Controllers\Web\ActionDraftController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/session', [SessionController::class, 'session'])->name('session');
@@ -26,6 +27,14 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/my/events/{event}/legacy', [LegacyController::class, 'index'])->whereNumber('event')->name('my.events.legacy.index');
     Route::get('/my/events/{event}/legacy/{lesson}', [LegacyController::class, 'show'])
         ->whereNumber(['event', 'lesson'])->name('my.events.legacy.show');
+
+    Route::prefix('/my/events/{event}/legacy/{sourceLesson}/action')
+        ->whereNumber(['event', 'sourceLesson'])->name('my.events.legacy.action.')->group(function () {
+            Route::get('/', [LegacyController::class, 'actionForm'])->name('form');
+            Route::post('/', [LegacyController::class, 'actionStore'])->name('store');
+            Route::post('/draft', ActionDraftController::class)
+                ->middleware('throttle:5,1,legacy-action-draft-')->name('draft');
+        });
 
     Route::get('/my/events/{event}/meetings', [MeetingController::class, 'index'])
         ->whereNumber('event')->name('my.events.meetings.index');
