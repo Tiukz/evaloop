@@ -97,17 +97,6 @@ Seeder berjalan pada environment `local` atau `testing` dan mempertahankan data 
 
 Registrasi biasa menghasilkan akun mahasiswa tanpa peran kepanitiaan. Hak mengelola organisasi dan acara diberikan melalui keanggotaan oleh pengguna yang berwenang.
 
-## Pengujian
-
-Jalankan dari `backend/`.
-
-```bash
-php vendor/bin/phpunit
-node --test tests/UI/*.test.mjs
-```
-
-Panduan alur demonstrasi, regresi, dan hasil pengujian tersedia di [docs/TESTING.md](docs/TESTING.md).
-
 ## Riwayat versi produk
 
 - **Versi awal v1.0 — Faculty Pilot.** Evaloop dirancang untuk satu fakultas dengan beberapa prodi dan organisasi. Empat modul inti ditetapkan pada tahap ini.
@@ -118,4 +107,3 @@ Panduan alur demonstrasi, regresi, dan hasil pengujian tersedia di [docs/TESTING
 - [Scope dan aturan produk](docs/SCOPE.md), [alur pengguna](docs/FLOWS.md), dan [kontrak rute](docs/API.md)
 - [Skema database](docs/DATABASE.md) dan [panduan desain](docs/DESIGN.md)
 - [Aturan kerja proyek](AGENTS.md) dan [riwayat pengembangan](EVALOOP_VERSION_TRACKER.md)
-- [Panduan TecFest](docs/TECFEST.md) dan [catatan penggunaan AI](docs/AI_USAGE_LOG.md)
